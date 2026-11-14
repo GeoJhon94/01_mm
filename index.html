@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/white.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1080px; width: 1920px; min-height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="enlace-roto" onerror="document.oncontextmenu = function(e) { e.preventDefault(); return false; };" style="display: none;">
+
+<style>
+/* 1) Impedir selección y copia de texto */
+body, .reveal {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE/Edge */
+    user-select: none;         /* Estándar */
+}
+</style>
+
+<!-- 1. FORZAMOS A OBSIDIAN A EXPORTAR EL FONDO A LA CARPETA CORRECTA -->
+<div style="display: none;">
+<img src="Course/01_Mass_Movements/00_Background.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<style>
+/* 2. APLICAMOS EL FONDO GLOBAL USANDO LA RUTA EXACTA QUE OBSIDIAN GENERA */
+.reveal::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* AQUÍ ESTÁ LA MAGIA: La ruta exacta que vimos en tu código HTML */
+    background-image: url("Course/01_Mass_Movements/00_Background.png");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3 !important;
+    z-index: 0; 
+    pointer-events: none;
+}
+
+/* Base blanca detrás de la imagen semitransparente */
+.reveal {
+    background-color: #FFFFFF !important;
+}
+.reveal .slide-background {
+    background: transparent !important;
+}
+
+/* FUENTE DE EXCALIDRAW Y TEXTOS */ 
+@font-face { 
+    font-family: 'Virgil'; 
+    src: url('https://excalidraw.com/Virgil.woff2') format('woff2'); 
+} 
+.reveal, .reveal h1, .reveal h2, .reveal h3 { 
+    font-family: 'Virgil', cursive !important; 
+    text-transform: none !important; 
+}
+.reveal .slides section { 
+    text-align: center !important; 
+    box-sizing: border-box !important; 
+    width: 100% !important; 
+    height: 100% !important; 
+    word-break: break-all !important; 
+}
+
+/* ANIMACIÓN DE OJOS */
+@keyframes mirarLados {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(-4px) rotate(-10deg); }
+    75% { transform: translateX(4px) rotate(10deg); }
+}
+.move {
+    display: inline-block;
+    animation: mirarLados 1.5s infinite ease-in-out;
+    font-size: 1.2em; 
+    vertical-align: middle;
+    margin-right: 8px;
+}
+</style>
+
+<div style="position: absolute; top: 0; left: 0; width: 100%; text-align: center; box-sizing: border-box;">
+
+<h1 style="color: rgb(54, 122, 236); font-size: 60px; margin-bottom: 0;">INFORMACIÓN DOCENTE</h1>
+<h2 style="color: rgb(54, 122, 236); font-size: 50px; margin-top: 0;">Jhonatan Rivera Rivera</h2>
+
+<div style="margin-top: 40px; margin-bottom: 20px;">
+
+<img src="Course/01_Mass_Movements/01_Logos.png" alt="" style="width: 1000px; object-fit: fill">
+
+
+</div>
+
+**1. Geólogo**<br>
+Universidad Industrial de Santander 🇨🇴<br>
+<br>
+**2. Máster en Planificación y Gestión de Riesgos Naturales**<br>
+Universidad de Alicante 🇪🇸<br>
+<br>
+**3. Máster en Análisis del Riesgo Sísmico mediante Tecnologías Geoespaciales**<br>
+Universidad Politécnica de Madrid 🇪🇸<br>
+<br>
+**4. Candidato PhD en Ingeniería Geomática**<br>
+Universidad Politécnica de Madrid 🇪🇸<br>
+<br>
+
+<a href="mailto:georiverajhon14@gmail.com" style="text-decoration: none; color: inherit;">
+    <img src="https://cdn.simpleicons.org/gmail/EA4335" style="width: 35px; height: 35px; vertical-align: middle; margin-right: 10px;">
+</a>
+
+<a href="https://www.linkedin.com/in/geojhonrivera" target="_blank" style="text-decoration: none; color: inherit;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="width: 35px; height: 35px; vertical-align: middle; margin-right: 10px; fill: #0A66C2;"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg>
+</a>
+
+<a href="https://scholar.google.com/citations?user=9zU7e00AAAAJ&hl=en" target="_blank" style="text-decoration: none; color: inherit;">
+    <img src="https://cdn.simpleicons.org/googlescholar/4285F4" style="width: 35px; height: 35px; vertical-align: middle; margin-right: 10px;"> 
+</a>
+
+<a href="https://wa.me/34603826324" target="_blank" style="text-decoration: none; color: inherit;">
+    <img src="https://cdn.simpleicons.org/whatsapp/25D366" style="width: 35px; height: 35px; vertical-align: middle; margin-right: 10px;">
+</a>
+
+</div>
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/menu/menu.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+		  RevealMenu,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+		menu: {
+			loadIcons: false
+		}
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":1920,"height":1080,"margin":0.1,"controls":true,"progress":true,"slideNumber":true,"center":null,"transition":"slide","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
